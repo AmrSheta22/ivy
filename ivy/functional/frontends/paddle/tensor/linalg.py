@@ -144,9 +144,3 @@ def bmm(x, y, transpose_x=False, transpose_y=False, name=None):
 @to_ivy_arrays_and_back
 def matrix_power(x, n, name=None):
     return ivy.matrix_power(x, n)
-
-@with_unsupported_dtypes({"2.5.0 and below": ("float16", "bfloat16")}, "paddle")
-@to_ivy_arrays_and_back
-def dot(x, y, name=None):
-    x, y = promote_types_of_paddle_inputs(x, y)
-    return ivy.vecdot(x,y)
